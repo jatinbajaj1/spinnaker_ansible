@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+
+- name: Update APT cache
+  apt:
+    update_cache: yes
+  ignore_errors: yes
+  become: yes
+
+
+- name: Install package 'curl'
+  apt:
+    pkg: curl
+    state: present
+  register: curl_install
+  when: which_curl_cmd.rc != 0
+  become: yes

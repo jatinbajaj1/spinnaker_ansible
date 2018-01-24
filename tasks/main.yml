@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+
+  tasks:
+   - name: Update APT cache
+     apt:
+      update_cache: yes
+     ignore_errors: yes
+     become: yes
+
+   - name: Install package curl
+     apt:
+      pkg: curl
+     register: curl_install
+     become: yes
