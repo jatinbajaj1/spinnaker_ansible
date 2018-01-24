@@ -1,15 +1,28 @@
 ---
 - hosts: localhost
+  remote_user: root
+  become_method: sudo
 
   tasks:
-   - name: Update APT cache
+#   - name: Update APT cache
+#     apt:
+#      update_cache: yes
+#     ignore_errors: yes
+#     become_user: root 
+
+   - name: Install package python apt 
      apt:
-      update_cache: yes
-     ignore_errors: yes
-     become: yes
+      pkg: python-apt 
+     register: curl_install
+
 
    - name: Install package curl
      apt:
       pkg: curl
      register: curl_install
-     become: yes
+
+   - name: Install package expect 
+     apt:
+      pkg: expect 
+     register: expect_install
+
