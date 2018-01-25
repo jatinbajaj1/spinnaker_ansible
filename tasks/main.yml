@@ -26,3 +26,9 @@
       pkg: expect 
      register: expect_install
 
+   - name: install spinnaker 
+     script: expect_spinnaker.sh "devlet" 
+     register: spinnaker_install
+
+
+   - debug: var=spinnaker_install

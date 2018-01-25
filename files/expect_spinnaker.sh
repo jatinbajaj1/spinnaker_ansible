@@ -1,16 +1,15 @@
 #!/usr/bin/expect -f
  
  
-spawn ./install_spinnaker.sh
+spawn /home/devlet/spinnaker_ansible/files/install_spinnaker.sh
  
-expect "[sudo] password for\r"
 
-send -- "dev\n"
+set timeout 10s
  
 expect "Please supply a non-root user to run Halyard as:"
 
-send -- "dev\n"
+send --  "devlet\n" 
 
-set timeout 180s
+set timeout 300s
 
 expect eof 
