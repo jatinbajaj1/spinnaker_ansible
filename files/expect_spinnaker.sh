@@ -10,6 +10,6 @@ expect "Please supply a non-root user to run Halyard as:"
 
 send --  "devlet\n" 
 
-set timeout 300s
+set timeout 120s
 
 expect eof 

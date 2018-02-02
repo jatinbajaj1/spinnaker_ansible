@@ -27,9 +27,10 @@
       pkg: expect 
      register: expect_install
 
-   - name: install spinnaker 
-     script: expect_spinnaker.sh  "devlet" 
-     register: spinnaker_install
+
+#   - name: install spinnaker 
+#     script: expect_spinnaker.sh  "dev" 
+#     register: spinnaker_install
 
 
    - debug: var=spinnaker_install
@@ -42,15 +43,19 @@
      shell: hal config storage edit --type redis
      register: out_2
 
-   - name: Hal configuration version
-     expect:
-      command: "hal config provider docker-registry account add my-docker-account-2 --address https://index.docker.io/ --repositories jabajaj/kubectl --username jabajaj --password"
-      responses:
-       Your docker registry password: "cisco123\n"
+   - name: add halyard account
+     script: expect_hal_account.sh  "dev"
+     register: spinnaker_install
+
+#   - name: Hal configuration version
+#     expect:
+#      command: "hal config provider docker-registry account add my-docker-account-2 --address https://index.docker.io/ --repositories jabajaj/kubectl --username jabajaj --password"
+#      responses:
+#       Your docker registry password: "cisco123\n"
 
    - name: Hal configuration storage
-     shell: hal deploy apply 
-     become_method: sudo 
+     shell: sudo hal deploy apply 
+#     become_method: sudo 
      register: out_2
        
 
