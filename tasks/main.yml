@@ -48,6 +48,21 @@
      script: expect_hal_account.exp {{DEV_USER}} {{REPO_NAME}} {{USER_NAME}} {{ REPO_PWD}} 
      register: spinnaker_install
 
+   - name: add docker registery account
+     shell: hal config provider docker-registry enable --no-validate
+     register: out_1
+
+
+   - name: add kubernetes account
+     shell: hal config provider kubernetes account add my-kube-account --kubeconfig-file ~/.kube/config --docker-registries my-docker-account-1 --debug 
+     register: out_1
+
+   - name: add kubernete account
+     shell: hal config provider kubernetes enable --no-validate
+     register: out_1
+
+
+
    - debug: var=spinnaker_install
 
 #   - name: Hal configuration version
