@@ -24,6 +24,12 @@
       pkg: curl
      register: curl_install
 
+   - name: Make kube dir
+     shell: "sudo mkdir ~/.kube"
+
+   - name: Make kube config file
+     shell: "cp ../files/config ~/.kube/config"    
+
    - name: Install package expect 
      apt:
       pkg: expect 
