@@ -42,12 +42,26 @@
 
    - debug: var=spinnaker_install
 
-   - name: Hal configuration version 
-     shell: hal config version edit --version 1.5.4
+   - name: Hal config deploy type 
+     shell: hal config deploy edit --type localdebian 
      register: out_1 
 
+   - name: Hal config deploy test
+     shell: hal config --set-current-deployment {{DEPLOYMENT}} 
+     register: out_1
+
+
+   - name: Hal configuration version
+     shell: hal config version edit --version 1.5.4
+     register: out_1
+
+   - name: add hal storage s3 bucket 
+     script: expect_hal_storage.exp {{AWS_KEY_ID}} {{AWS_SECRET_KEY}} {{AWS_REGION}}
+     register: spinnaker_install
+
+
    - name: Hal configuration storage 
-     shell: hal config storage edit --type redis
+     shell: hal config storage edit --type s3 
      register: out_2
 
    - name: add halyard account
