@@ -1,0 +1,18 @@
+#!/usr/bin/expect -f
+
+set key_id [lindex $argv 0];
+set secret_key [lindex $argv 1];
+set region [lindex $argv 2];
+
+set timeout 1
+spawn ./add_hal_storage.sh $key_id $region
+
+set timeout 5s
+
+expect "Your AWS Secret Key.:"
+
+send $secret_key\n
+
+set timeout 20s
+
+expect eof
