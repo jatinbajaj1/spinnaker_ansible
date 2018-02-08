@@ -69,7 +69,7 @@ curl -X POST -H 'Content-Type: application/json' -i 'http://localhost:8084/pipel
     }
   ],
   "keepWaitingPipelines": "false"
-}
+}'
 
 curl -X POST -H 'Content-Type: application/json' -i  'http://localhost:8084/pipelines/testinfra/statefulset-pipeline' --data '{
   "application": "testinfra",
@@ -80,5 +80,5 @@ curl -X POST -H 'Content-Type: application/json' -i  'http://localhost:8084/pipe
     }
   ],
   "description": "Create StatefulSet in Application testinfrastructure"
-}
+}'
 
