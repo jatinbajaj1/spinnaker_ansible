@@ -57,13 +57,13 @@
      shell: hal config version edit --version 1.5.4
      register: out_1
 
-   - name: add hal storage s3 bucket 
-     script: expect_hal_storage.exp {{INPUT_K}} {{INPUT_2K}} {{AWS_REGION}}
-     register: spinnaker_install
+#   - name: add hal storage s3 bucket 
+#     script: expect_hal_storage.exp {{INPUT_K}} {{INPUT_2K}} {{AWS_REGION}}
+#     register: spinnaker_install
 
 
    - name: Hal configuration storage 
-     shell: hal config storage edit --type s3 
+     shell: hal config storage edit --type redis 
      register: out_2
 
    - name: add halyard account
