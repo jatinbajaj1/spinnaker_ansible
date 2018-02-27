@@ -30,7 +30,7 @@
      shell: "sudo mkdir ~/.kube"
 
    - name: Make kube config file
-     shell: "cp ../files/config ~/.kube/config"    
+     shell: "cp ./files/config ~/.kube/config"    
 
    - name: Install package expect 
      apt:
