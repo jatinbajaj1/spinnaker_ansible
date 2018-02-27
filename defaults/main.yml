@@ -1,5 +1,5 @@
 ---
-DEV_USER: "ubuntu"
+DEV_USER: "devlet"
 REPO_NAME: "jabajaj/kubectl"
 USER_NAME: "jabajaj"
 REPO_PWD: "cisco123"
